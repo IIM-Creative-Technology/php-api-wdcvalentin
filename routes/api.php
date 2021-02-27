@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\StudentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,6 +24,8 @@ Route::group([
     Route::post('logout', [AuthController::class, 'logout']);
 });
 
+Route::get('students', [StudentController::class, 'getStudents']);
+Route::get('students/{class}', [StudentController::class, 'getStudentsFromClass']);
 // Route::middleware('jwt.auth')->group(function () {
 //     Route::get()
 // })
