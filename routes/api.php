@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\TeacherController;
+use App\Models\Teacher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -26,6 +28,14 @@ Route::group([
 
 Route::get('students', [StudentController::class, 'getStudents']);
 Route::get('students/{class}', [StudentController::class, 'getStudentsFromClass']);
+
+
+Route::post('create-teacher', [TeacherController::class, 'store']);
+Route::put('update-teacher/{id}', [TeacherController::class, 'update']);
+Route::get('teachers', [TeacherController::class, 'getAllTeachers']);
+Route::get('teacher/{id}', [TeacherController::class, 'getTeacher']);
+
+
 // Route::middleware('jwt.auth')->group(function () {
 //     Route::get()
 // })

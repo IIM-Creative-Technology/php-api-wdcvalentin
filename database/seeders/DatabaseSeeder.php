@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\SchoolClass;
 use App\Models\Student;
+use App\Models\Teacher;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
@@ -29,10 +30,9 @@ class DatabaseSeeder extends Seeder
         
         DB::table('school_classes')->truncate();
         SchoolClass::factory(5)->create();
-        
+
         DB::table('students')->truncate();
         Student::factory(10)->create();
-
 
         Schema::enableForeignKeyConstraints();
         Model::reguard();
