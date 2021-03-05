@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\TeacherController;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
@@ -35,6 +36,7 @@ Route::put('update-teacher/{id}', [TeacherController::class, 'update']);
 Route::get('teachers', [TeacherController::class, 'getAllTeachers']);
 Route::get('teacher/{id}', [TeacherController::class, 'getTeacher']);
 
+Route::post('create-subject', [SubjectController::class, 'store']);
 
 // Route::middleware('jwt.auth')->group(function () {
 //     Route::get()
