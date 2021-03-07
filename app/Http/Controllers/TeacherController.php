@@ -12,16 +12,17 @@ class TeacherController extends Controller
         $request->validate([
             'first_name' => ['min: 3', 'max:255', 'required'],
             'last_name' => ['min: 3', 'max:255', 'required'],
-            'arrival_date' => 'required'
+            'arrival_date' => ['date', 'required']
         ]);
         $teacher = new Teacher();
         $teacher->first_name = $request->first_name;
         $teacher->last_name = $request->last_name;
-        $teacher->arrival_date = date("F j, Y, g:i a");
+        $teacher->arrival_date = date("F j, Y");
         $teacher->save();
         return response()->json([
-            'message' => 'success'
-        ], 200);
+            'message' => 'Teacher created with success',
+            'status' => 201
+        ], 201);
     }
 
     public function update(Request $request, $id) {
@@ -37,7 +38,8 @@ class TeacherController extends Controller
         $teacher->save();
 
         return response()->json([
-            'message' => 'success'
+            'message' => 'Teacher updated with success',
+            'status' => 200
         ], 200);
     }
 
@@ -49,11 +51,35 @@ class TeacherController extends Controller
                             'teachers.arrival_date'
                             )
                         ->get();
-        return $teachers;
+        return response()->json([
+            'message' => 'Teachers fetched with success',
+            'data' => $teachers
+        ], 200);
     }
 
     public function getTeacher($id) {
         $teacher = Teacher::select(['first_name', 'last_name', 'arrival_date'])->findOrFail($id);
-        return $teacher;
+        return response()->json([
+            'message' => 'Teacher fetched with success',
+            'status' => 200,
+            'data' => $teacher
+        ], 200);;
+    }
+
+    public function delete($id) {
+        $isTeacherExist = DB::table('teachers')
+        ->where('teachers.id', $id)
+        ->get();
+        if (empty($isTeacherExist[0])) {
+            return response()->json([
+                'message' => 'Teacher not found',
+                'status' => 400
+            ], 400);
+        }
+        $teacher = Teacher::findOrFail($id);
+        $teacher->delete();
+        return response()->json([
+            'message' => 'Teacher deleted with success'
+        ], 200);
     }
 }

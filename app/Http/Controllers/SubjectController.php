@@ -42,7 +42,20 @@ class SubjectController extends Controller
         $subject->save();
 
         return response()->json([
-            'message' => 'success'
+            'message' => 'Subject created with success'
+        ], 201);
+    }
+    public function getSubjects()
+    {
+        // FAIRE JOINTURE PR MONTRER LE TEACHER ET LA CLASSE
+        $subjects = DB::table('subjects')
+            ->select(
+                'subjects.name',
+            )
+            ->get();
+        return response()->json([
+            'status' => 200,
+            'data' => $subjects
         ], 200);
     }
 }
