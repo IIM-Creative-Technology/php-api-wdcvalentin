@@ -1,11 +1,11 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\MarkController;
+use App\Http\Controllers\SchoolClassController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\TeacherController;
-use App\Models\Teacher;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +27,12 @@ Route::group([
     Route::post('logout', [AuthController::class, 'logout']);
 });
 
+Route::post('create-class', [SchoolClassController::class, 'store']);
+Route::get('classes', [SchoolClassController::class, 'getClasses']);
+Route::get('class/{class}', [SchoolClassController::class, 'getClass']);
+Route::put('update-class/{id}', [SchoolClassController::class, 'update']);
+Route::delete('delete-class/{id}', [SchoolClassController::class, 'delete']); 
+
 Route::post('create-student', [StudentController::class, 'store']);
 Route::get('students', [StudentController::class, 'getStudents']);
 Route::get('studentsFromClass/{class}', [StudentController::class, 'getStudentsFromClass']);
@@ -44,6 +50,15 @@ Route::get('subjects', [SubjectController::class, 'getSubjects']);
 Route::get('subject/{name}', [SubjectController::class, 'getSubject']);
 Route::put('update-subject/{id}', [SubjectController::class, 'update']);
 Route::delete('delete-subject/{id}', [SubjectController::class, 'delete']);
+
+Route::post('set-mark', [MarkController::class, 'store']);
+Route::get('marks', [MarkController::class, 'getMarks']);
+Route::get('student-marks/{student_id}', [MarkController::class, 'getStudentMarks']);
+Route::get('student-marks/student/{student_id}/subject/{subject_id}', 
+    [MarkController::class, 'getMarksFromStudentAndSubject']);
+Route::put('update-mark/{id}', [MarkController::class, 'update']);
+Route::put('patch-mark/{id}', [MarkController::class, 'patch']);
+Route::delete('delete-mark/{id}', [MarkController::class, 'delete']);
 
 // Route::middleware('jwt.auth')->group(function () {
 //     Route::get()
