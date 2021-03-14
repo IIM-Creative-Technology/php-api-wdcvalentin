@@ -12,6 +12,9 @@ Bienvenue sur l'API de l'école Leonard de Vinci
 
 ## A PROPOS DE L'API
 
+L'utilisation de l'API nécessite une authentification qui générera un access token.
+Cet access token sera à saisir dans l'Authorization de type Bearer Token 
+
 Les identifiants pour les membres de l'administration seront générés
 avec les seeds.
 
