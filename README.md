@@ -15,7 +15,7 @@ Bienvenue sur l'API de l'école Leonard de Vinci
 Les identifiants pour les membres de l'administration seront générés
 avec les seeds.
 
-lien postman de ma collection : https://www.getpostman.com/collections/c032b3d3876be5386147
+lien postman de ma collection API : https://www.getpostman.com/collections/c032b3d3876be5386147
 
 Authentification JWT :
 ```
@@ -50,7 +50,7 @@ Matières :
     4. DEL : /api/delete-subject/{id}
 ```
 
-Classe :
+Classes :
 ```
     1. POST : /api/create-class => body : [name, year]
     2. GET : /api/classes
