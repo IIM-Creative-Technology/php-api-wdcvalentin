@@ -21,13 +21,15 @@ Authentification JWT :
     1. POST : /api/auth/login => body : [email, password]
     2. POST : /api/auth/logout => body : token
 
-Etudiants : 
+Etudiants :
+```
     1. POST : /api/student => body : [first_name, last_name, age, class]
     2. GET : /api/students
     3. GET : /api/student/{id}
     4. PUT : /api/update-student/{id} => body : [first_name, last_name, age, class]
     5. DEL : /api/delete-student/{id}
     6. GET : /api/students-from-class/{className} => nom de la classe en QS.
+```
 
 Intervenants :
     1. POST : /api/create-teacher => body : [first_name, last_name, arrival_date]
