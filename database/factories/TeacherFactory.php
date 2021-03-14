@@ -22,7 +22,9 @@ class TeacherFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'last_name' => $this->faker->lastName,
+            'first_name' => $this->faker->firstName,
+            'arrival_date' => now(),
         ];
     }
 }

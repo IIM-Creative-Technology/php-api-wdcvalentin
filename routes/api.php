@@ -35,7 +35,8 @@ Route::delete('delete-class/{id}', [SchoolClassController::class, 'delete']);
 
 Route::post('create-student', [StudentController::class, 'store']);
 Route::get('students', [StudentController::class, 'getStudents']);
-Route::get('studentsFromClass/{class}', [StudentController::class, 'getStudentsFromClass']);
+Route::get('student/{id}', [StudentController::class, 'getStudent']);
+Route::get('students-from-class/{class}', [StudentController::class, 'getStudentsFromClass']);
 Route::put('update-student/{id}', [StudentController::class, 'update']);
 Route::delete('delete-student/{id}', [StudentController::class, 'delete']);
 
@@ -57,7 +58,6 @@ Route::get('student-marks/{student_id}', [MarkController::class, 'getStudentMark
 Route::get('student-marks/student/{student_id}/subject/{subject_id}', 
     [MarkController::class, 'getMarksFromStudentAndSubject']);
 Route::put('update-mark/{id}', [MarkController::class, 'update']);
-Route::put('patch-mark/{id}', [MarkController::class, 'patch']);
 Route::delete('delete-mark/{id}', [MarkController::class, 'delete']);
 
 // Route::middleware('jwt.auth')->group(function () {

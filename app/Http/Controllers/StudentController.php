@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\DB;
 
 class StudentController extends Controller
 {
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         $request->validate([
             'first_name' => ['min: 3', 'max:255', 'required'],
             'last_name' => ['min: 3', 'max:255', 'required'],
@@ -37,6 +38,25 @@ class StudentController extends Controller
         return response()->json([
             'message' => 'Students fetched with success',
             'data' => $students
+        ], 200);
+    }
+
+    public function getStudent($id)
+    { 
+        $isStudentExist = DB::table('students')
+            ->where('students.id', $id)
+            ->get();
+        if (empty($isStudentExist[0])) {
+            return response()->json([
+                'Error' => 'Student ID does not exist'
+            ], 400);
+        }
+
+        $student = Student::findOrFail($id);
+
+        return response()->json([
+            'message' => 'Students fetched with success',
+            'data' => $student
         ], 200);
     }
 
@@ -69,7 +89,8 @@ class StudentController extends Controller
         ], 200);
     }
 
-    public function update($id, Request $request) {
+    public function update($id, Request $request)
+    {
         $student = Student::findOrFail($id);
         $schoolclass_id = DB::table('school_classes')
             ->where('school_classes.name', $request->class)
@@ -96,10 +117,11 @@ class StudentController extends Controller
         ], 200);
     }
 
-    public function delete($id) {
+    public function delete($id)
+    {
         $isStudentExist = DB::table('students')
-        ->where('students.id', $id)
-        ->get();
+            ->where('students.id', $id)
+            ->get();
         if (empty($isStudentExist[0])) {
             return response()->json([
                 'message' => 'Student not found'
