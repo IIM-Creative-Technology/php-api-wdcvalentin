@@ -1,5 +1,15 @@
 Bienvenue sur l'API de l'école Leonard de Vinci
 
+## Lancement
+
+1. git clone https://github.com/IIM-Creative-Technology/php-api-wdcvalentin.git
+2. cd php-api-wdcvalentin
+3. composer install
+4. modifier le .env en fonction de vos paramètres
+5. php artisan migrate
+6. php artisan db:seed
+7. php artisan serve
+
 ## A PROPOS DE L'API
 
 Les identifiants pour les membres de l'administration seront générés
