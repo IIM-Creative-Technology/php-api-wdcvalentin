@@ -28,7 +28,7 @@ class StudentFactory extends Factory
                         ->where('school_classes.id', $class_id)
                         ->select('school_classes.name')
                         ->get();
-                        // dd($className[0]->name->toString());
+
         return [
             'last_name' => $this->faker->lastName,
             'first_name' => $this->faker->firstName,

@@ -2,10 +2,11 @@ Bienvenue sur l'API de l'école Leonard de Vinci
 
 ## A PROPOS DE L'API
 
-Les dates s'écrivent dans ce format : "February 28, 2021".
-
 Les identifiants pour les membres de l'administration seront générés
 avec les seeds.
+
+lien postman de ma collection : https://www.getpostman.com/collections/c032b3d3876be5386147
+
 Authentification JWT :
     POST : /api/auth/login => body : [email, password]
     POST : /api/auth/logout => body : token
